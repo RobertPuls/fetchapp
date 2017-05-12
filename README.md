@@ -1,5 +1,3 @@
-
-
 # fetchapp - Project Description:
 Fetch pulls available adoption data, by location to help find a new 4 legged friend.
 It allows users to search for dogs available in there area. It has a clean user
