@@ -52,7 +52,7 @@ $(document).ready(function() {
         }
         // Append to HTML
         $(".available-animals").append(
-          `<div class="col s3" id="animal-display">
+          `<div class="col s4" id="animal-display">
               <div class="card">
                 <div class="card-image waves-effect waves-block waves-light">
                   <img class="activator img-cropper" src="${petPhoto}">
