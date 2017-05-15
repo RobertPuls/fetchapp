@@ -16,20 +16,21 @@
   <!-- Start Header -->
   <header>
     <a href="#home"><img src="assets/images/fetchapp-logo.png" alt="Fetch App Logo" class="brand-logo "></a>
-  </header><!-- End Header -->
+  </header>
+  <!-- End Header -->
 
   <!-- Start Main Body Page 1-->
   <main>
     <!-- Start Search Field Section -->
-    <section class="row">
+    <section class="row" id="landing">
       <div class="container">
         <form>
 
           <div class="input-field col s4">
             <select name="animal-type" id="animal-type" required>
               <option value="" disabled selected>What are you looking for</option>
-              <option value="dog">Dog</option>
-              <option value="cat">Cat</option>
+              <option value="dog" class="teal-text text-accent-2">Dog</option>
+              <option value="cat" class="teal-text text-accent-2">Cat</option>
             </select>
             <label for="animal-type"></label>
           </div>
@@ -40,32 +41,36 @@
           </div>
           <div class="input-field col s4">
             <label for="breed"></label>
-            <input type="text" id="breed" name="breed" value="" placeholder="Breed: i.e. Welsh Corgi"><br />
+            <input type="text" id="breed" name="breed" value="" placeholder="Breed: i.e. Welsh Corgi" class="autocomplete"><br />
           </div>
           <div class="col s12 center">
             <button type="submit" name="button" class="btn teal accent-2 button-select">SEARCH</button>
           </div>
         </form>
       </div>
-    </section><!-- End Search Field Section -->
+    </section>
+    <!-- End Search Field Section -->
 
-    <section class="row">
-      <div class="container available-dogs">
+    <section class="row" id="search-results">
+      <div class="container available-animals">
         <!-- Append Search Results -->
       </div>
     </section>
 
-  </main><!-- End Main Body -->
+  </main>
+  <!-- End Main Body -->
 
   <!-- Start Footer -->
   <footer>
 
-  </footer><!-- End Footer -->
+  </footer>
+  <!-- End Footer -->
 
   <!-- Scripts -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" charset="utf-8"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js" charset="utf-8"></script>
   <script src="assets/scripts/application.js" charset="utf-8"></script>
+  <script src="assets/scripts/animation.js" charset="utf-8"></script>
 </body>
 
 </html>
