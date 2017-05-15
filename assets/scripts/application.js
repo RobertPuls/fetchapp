@@ -1,4 +1,4 @@
-const API_URL = "https://api.petfinder.com/pet.find?da27018a67011f3d70782e87862dfc22&key=298afb38924e16ecd46eb9871122641b&format=json&count=20";
+const API_URL = "https://api.petfinder.com/pet.find?da27018a67011f3d70782e87862dfc22&key=298afb38924e16ecd46eb9871122641b&format=json&count=24";
 
 $(document).ready(function() {
   $('select').material_select();
@@ -52,7 +52,7 @@ $(document).ready(function() {
         }
         // Append to HTML
         $(".available-animals").append(
-          `<div class="col s4" id="animal-display">
+          `<div class="col s4">
               <div class="card">
                 <div class="card-image waves-effect waves-block waves-light">
                   <img class="activator img-cropper" src="${petPhoto}">
@@ -75,43 +75,37 @@ $(document).ready(function() {
       }); //End foreach loop
     }).catch(function(err) {
       console.log("Error Receiving Data");
+      $(".available-animals").append(`<p>Your search returned 0 results</p>`);
     }); //End Catch
   }); //End Form Submit
 
-  // const BREED_URL = "http://api.petfinder.com/breed.list?animal=dog&da27018a67011f3d70782e87862dfc22&key=298afb38924e16ecd46eb9871122641b&format=json&callback=?"
-  //
-  // function breedResults() {
-  //   $.getJSON(BREED_URL)
-  //     .then(displayDogBreeds)
-  // }
-  //
-  // function displayDogBreeds(dogBreedData) {
-  //   const breedData = dogBreedData.petfinder.breeds.breed
-  //   let breedTypes = [];
-  //   $.each(breedData, function(index, value) {
-  //     breedTypes.push(breedData[index].$t);
-  //   });
-  //   // console.log(breedTypes);
-  //   return breedTypes;
-  // };
-  //
-  // function createBreedObject(displayDogBreeds) {
-  //   let breedsTypeObject = {};
-  //   console.log(displayDogBreeds);
-  // }
-  // breedResults();
-  // createBreedObject();
-  //
-  // // AutoComplete Dog Breed Types
-  //
-  // // $('input.autocomplete').autocomplete({
-  // //   data: breedsTypeObject,
-  // //   limit: 20, // The max amount of results that can be shown at once. Default: Infinity.
-  // //   onAutocomplete: function(val) {
-  // //     // Callback function when value is autcompleted.
-  // //   },
-  // //   minLength: 1, // The minimum length of the input for the autocomplete to start. Default: 1.
-  // // });
+  const BREED_URL = "http://api.petfinder.com/breed.list?animal=dog&da27018a67011f3d70782e87862dfc22&key=298afb38924e16ecd46eb9871122641b&format=json&callback=?"
+
+  function breedResults() {
+    $.getJSON(BREED_URL)
+      .then(displayDogBreeds)
+  }
+
+  function displayDogBreeds(dogBreedData) {
+    const breedData = dogBreedData.petfinder.breeds.breed
+    let breedTypes = {};
+    $.each(breedData, function(index, value) {
+      breedTypes[breedData[index].$t] = null;
+    });
+    console.log(breedTypes);
+    $('.autocomplete').autocomplete({
+        data: breedTypes,
+        limit: 20,
+        onAutocomplete: function(val) {
+        // Callback function when value is autcompleted.
+        },
+        minLength: 1,
+      });
+    }; //End Fn displayDogBreeds
+  
+  breedResults();
+
+
 
   // Fn to disable breed input if cat is selected.
   function disableBreedInput() {
