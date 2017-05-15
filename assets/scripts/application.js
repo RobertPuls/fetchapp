@@ -1,4 +1,4 @@
-const API_URL = "http://api.petfinder.com/pet.find?da27018a67011f3d70782e87862dfc22&key=298afb38924e16ecd46eb9871122641b&format=json&count=20";
+const API_URL = "https://api.petfinder.com/pet.find?da27018a67011f3d70782e87862dfc22&key=298afb38924e16ecd46eb9871122641b&format=json&count=20";
 
 $(document).ready(function() {
   $('select').material_select();
