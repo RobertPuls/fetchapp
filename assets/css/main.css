@@ -2,12 +2,6 @@ body {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
-  background-image: url("assets/images/background-image.jpg");
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center;
-}
-.bg-image {
 }
 
 main {
@@ -30,6 +24,12 @@ main {
   border-bottom: 1px solid #64ffda;
 }
 
+.background-image {
+  /*background-image: url('assets/images/threePuppies.jpg');*/
+  /*background-repeat: no-repeat;*/
+  /*background-attachment: fixed;*/
+  /*background-position: center;*/
+}
 
 /*Media Queries*/
 

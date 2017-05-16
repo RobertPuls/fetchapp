@@ -1,12 +1,15 @@
-const API_URL = "https://api.petfinder.com/pet.find?da27018a67011f3d70782e87862dfc22&key=298afb38924e16ecd46eb9871122641b&format=json&count=24";
+const API_URL = "https://api.petfinder.com/pet.find?da27018a67011f3d70782e87862dfc22&key=298afb38924e16ecd46eb9871122641b&format=json&count=48";
 
 $(document).ready(function() {
+  $(".loading").hide();
   $('select').material_select();
   $("#animal-type").change(disableBreedInput)
   // Form Submit
   $("form").submit(function(event) {
     event.preventDefault();
     $(".available-animals").empty();
+    $("#animal-search-submit").attr("disabled", "disabled");
+    $(".loading").show();
     const locationInput = $("#location").val();
     const breedInput = $("#breed").val();
     const animalInput = $("#animal-type").val();
@@ -52,7 +55,7 @@ $(document).ready(function() {
         }
         // Append to HTML
         $(".available-animals").append(
-          `<div class="col s12 m6 l4">
+          `<div class="col s12 m6 l3">
               <div class="card">
                 <div class="card-image waves-effect waves-block waves-light">
                   <img class="activator img-cropper" src="${petPhoto}">
@@ -73,6 +76,8 @@ $(document).ready(function() {
           </div>`
         ); //End append to HTML
       }); //End foreach loop
+      $('#animal-search-submit').removeAttr("disabled");
+      $(".loading").hide();
     }).catch(function(err) {
       console.log("Error Receiving Data");
       $(".available-animals").append(`<p>Your search returned 0 results</p>`);

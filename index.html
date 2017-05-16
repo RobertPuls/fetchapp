@@ -12,14 +12,13 @@
   <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.ico">
 </head>
 
-<body class="bg-image">
+<body class="background-image">
   <!-- Start Header -->
   <header>
     <a href="#home"><img src="assets/images/fetchapp-logo.png" alt="Fetch App Logo" class="brand-logo "></a>
   </header>
   <!-- End Header -->
-
-  <!-- Start Main Body Page 1-->
+  <!-- Start Main Body -->
   <main>
     <!-- Start Search Field Section -->
     <section class="row" id="landing">
@@ -46,8 +45,13 @@
         </form>
       </div>
     </section>
-    <!-- End Search Field Section -->
+    <!-- Indeterminate Load Bar -->
 
+    <div class="container progress loading">
+      <div class="indeterminate teal accent-2"></div>
+    </div>
+
+    <!-- End Search Field Section -->
     <section class="row" id="search-results">
       <div class="container available-animals">
         <!-- Append Search Results -->
