@@ -12,7 +12,7 @@
   <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.ico">
 </head>
 
-<body>
+<body class="bg-image">
   <!-- Start Header -->
   <header>
     <a href="#home"><img src="assets/images/fetchapp-logo.png" alt="Fetch App Logo" class="brand-logo "></a>
@@ -25,26 +25,23 @@
     <section class="row" id="landing">
       <div class="container">
         <form>
-
-          <div class="input-field col s4">
+          <div class="input-field col s12 l4">
             <select name="animal-type" id="animal-type" required>
               <option value="" disabled selected>What are you looking for</option>
               <option value="dog" class="teal-text text-accent-2">Dog</option>
               <option value="cat" class="teal-text text-accent-2">Cat</option>
             </select>
-            <label for="animal-type"></label>
           </div>
-
-          <div class="input-field col s4">
+          <div class="input-field col s12 l4">
             <label for="location"></label>
             <input type="text" id="location" class="autocomplete" name="location" value="" placeholder="Location: ZIP/City State" required>
           </div>
-          <div class="input-field col s4">
+          <div class="input-field col s12 l4">
             <label for="breed"></label>
-            <input type="text" id="breed" name="breed" value="" placeholder="Breed: i.e. Welsh Corgi" class="autocomplete"><br />
+            <input type="text" id="breed" name="breed" value="" placeholder="Breed: i.e. Welsh Corgi" class="autocomplete">
           </div>
           <div class="col s12 center">
-            <button type="submit" name="button" class="btn teal accent-2 button-select">SEARCH</button>
+            <button type="submit" id="animal-search-submit" name="button" class="btn teal accent-2 button-select"><a href="#search-results">SEARCH</a></button>
           </div>
         </form>
       </div>

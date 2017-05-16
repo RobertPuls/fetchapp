@@ -52,7 +52,7 @@ $(document).ready(function() {
         }
         // Append to HTML
         $(".available-animals").append(
-          `<div class="col s4">
+          `<div class="col s12 m6 l4">
               <div class="card">
                 <div class="card-image waves-effect waves-block waves-light">
                   <img class="activator img-cropper" src="${petPhoto}">
@@ -93,19 +93,13 @@ $(document).ready(function() {
       breedTypes[breedData[index].$t] = null;
     });
     console.log(breedTypes);
-    $('.autocomplete').autocomplete({
+    $('#breed').autocomplete({
         data: breedTypes,
         limit: 20,
-        onAutocomplete: function(val) {
-        // Callback function when value is autcompleted.
-        },
         minLength: 1,
       });
     }; //End Fn displayDogBreeds
-  
   breedResults();
-
-
 
   // Fn to disable breed input if cat is selected.
   function disableBreedInput() {
