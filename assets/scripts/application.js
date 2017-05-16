@@ -1,15 +1,28 @@
 const API_URL = "https://api.petfinder.com/pet.find?da27018a67011f3d70782e87862dfc22&key=298afb38924e16ecd46eb9871122641b&format=json&count=48";
 
 $(document).ready(function() {
-  $(".loading").hide();
+  setLoading(false)
+
   $('select').material_select();
+  // disable breed type if cat is selected
   $("#animal-type").change(disableBreedInput)
+
+  function setLoading(isLoading) {
+    if (isLoading) {
+      $(".loading").show();
+      $("form").hide();
+    } else {
+      $(".loading").hide();
+      $("form").show();
+    }
+  }
+
   // Form Submit
   $("form").submit(function(event) {
     event.preventDefault();
     $(".available-animals").empty();
     $("#animal-search-submit").attr("disabled", "disabled");
-    $(".loading").show();
+    setLoading(true)
     const locationInput = $("#location").val();
     const breedInput = $("#breed").val();
     const animalInput = $("#animal-type").val();
@@ -77,10 +90,12 @@ $(document).ready(function() {
         ); //End append to HTML
       }); //End foreach loop
       $('#animal-search-submit').removeAttr("disabled");
-      $(".loading").hide();
+      setLoading(false);
     }).catch(function(err) {
       console.log("Error Receiving Data");
       $(".available-animals").append(`<p>Your search returned 0 results</p>`);
+      $('#animal-search-submit').removeAttr("disabled");
+      setLoading(false);
     }); //End Catch
   }); //End Form Submit
 

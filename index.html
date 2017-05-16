@@ -15,15 +15,15 @@
 <body class="background-image">
   <!-- Start Header -->
   <header>
-    <a href="#home"><img src="assets/images/fetchapp-logo.png" alt="Fetch App Logo" class="brand-logo "></a>
   </header>
   <!-- End Header -->
   <!-- Start Main Body -->
   <main>
     <!-- Start Search Field Section -->
-    <section class="row" id="landing">
-      <div class="container">
-        <form>
+    <section class="row ">
+      <div class="container center-align">
+        <a href="#"><img src="assets/images/fetchapp-logo.png" alt="Fetch App Logo" class=" responsive-img center-align"></a>
+        <form autocomplete="off">
           <div class="input-field col s12 l4">
             <select name="animal-type" id="animal-type" required>
               <option value="" disabled selected>What are you looking for</option>
@@ -33,23 +33,39 @@
           </div>
           <div class="input-field col s12 l4">
             <label for="location"></label>
-            <input type="text" id="location" class="autocomplete" name="location" value="" placeholder="Location: ZIP/City State" required>
+            <input type="text" id="location" name="location" value="" placeholder="Location: ZIP/City State" required>
           </div>
           <div class="input-field col s12 l4">
             <label for="breed"></label>
             <input type="text" id="breed" name="breed" value="" placeholder="Breed: i.e. Welsh Corgi" class="autocomplete">
           </div>
           <div class="col s12 center">
-            <button type="submit" id="animal-search-submit" name="button" class="btn teal accent-2 button-select"><a href="#search-results">SEARCH</a></button>
+            <button type="submit" id="animal-search-submit" name="button" class="btn teal accent-2">SEARCH</button>
           </div>
         </form>
       </div>
     </section>
     <!-- Indeterminate Load Bar -->
 
-    <div class="container progress loading">
-      <div class="indeterminate teal accent-2"></div>
+    <div class="container center-align loading">
+      <img src="assets/images/loading-fetch.gif" alt="">
     </div>
+    <!-- Indeterminate Load Circle -->
+    <!-- <section class="container center-align">
+      <div class="loading preloader-wrapper big active">
+        <div class="spinner-layer spinner-teal-accent-2-only">
+          <div class="circle-clipper left">
+            <div class="circle"></div>
+          </div>
+          <div class="gap-patch">
+            <div class="circle"></div>
+          </div>
+          <div class="circle-clipper right">
+            <div class="circle"></div>
+          </div>
+        </div>
+      </div>
+    </section> -->
 
     <!-- End Search Field Section -->
     <section class="row" id="search-results">

@@ -8,18 +8,55 @@
   <!-- Stylesheets -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/main.css">
-  <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.ico">
+  <link rel="stylesheet" href="../pages/../assets/css/main.css">
+  <link rel="shortcut icon" type="image/x-icon" href="../pages/../assets/images/favicon.ico">
 </head>
 
 <body>
-<nav>
+  <nav class="deep-purple lighten-3">
+    <div class="row">
+      <div class="nav-wrapper">
+        <div class="container">
+          <div class="col s12 l6">
+            <a href="#" class="brand-logo"><img src="../pages/../assets/images/fetchapp-logo-man-nav.png" alt="Fetch App Logo" class="responsive-img"></a>
+          </div>
+          <div class="col s12 l6">
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+              <li><a href="" class="grey-text text-darken-3">About</a></li>
+              <li><a href="" class="grey-text text-darken-3">Shelters</a></li>
+              <li><a href="" class="grey-text text-darken-3">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
 
-</nav>
+  <section class="container">
+    <h2 class="header">Animal Shelter Lookup</h2>
+    <p>
+      Start your search for your local animal shelter or rescue. Enter your zip code, or city and state, and find a list of animal shelters, animal control agencies, and other animal care organizations in your community. You can also find animals available
+      for adoption, low-cost spay/neuter services, and volunteer opportunities.
+    </p>
+  </section>
 
+  <section>
+    <div class="row">
+      <form class="container valign-wrapper" autocomplete="off">
+        <div class="input-field col s12 l6">
+          <label for="shelter-location"></label>
+          <input type="text" id="shelter-location" name="location" value="" placeholder="Location: ZIP/City State" required>
+        </div>
+        <div class="col s12 l6">
+          <button type="submit" id="shelter-search-submit" name="button" class="btn teal accent-2">SEARCH</button>
+        </div>
+      </form>
+    </div>
+  </section>
   <!-- Scripts -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" charset="utf-8"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js" charset="utf-8"></script>
+  <script src="../pages/../assets/scripts/application.js" charset="utf-8"></script>
 </body>
 
 </html>

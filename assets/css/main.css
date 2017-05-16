@@ -23,14 +23,15 @@ main {
 .dropdown-content {
   border-bottom: 1px solid #64ffda;
 }
-
-.background-image {
-  /*background-image: url('assets/images/threePuppies.jpg');*/
-  /*background-repeat: no-repeat;*/
-  /*background-attachment: fixed;*/
-  /*background-position: center;*/
+nav {
+  height: 100px;
+  line-height: 100px;
+}
+button {
+  width: 100%;
 }
 
+/*=========================================*/
 /*Media Queries*/
 
 @media screen and (max-width: 992px) {
