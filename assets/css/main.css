@@ -33,16 +33,12 @@ button {
   align-self: center;
 }
 
-
-/*.bg-hero-image {
-  background-image: url("../../assets/images/threePuppies.jpg");
-  background-repeat: no-repeat;
-  background-position: center;
-  min-height: 100vh;
-}*/
-
 .row {
   flex: 1;
+}
+
+.valign-wrapper {
+  flex-wrap: wrap;
 }
 
 .input-field input[type=text]:focus {
