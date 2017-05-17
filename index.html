@@ -8,28 +8,49 @@
   <!-- Stylesheets -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="assets/css/main.css">
   <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.ico">
 </head>
 
-<body class="background-image">
+<body>
   <!-- Start Header -->
   <header>
+    <!-- Navigation -->
+    <nav class="deep-purple lighten-3" id="top-navigation">
+      <div class="row">
+        <div class="nav-wrapper">
+          <div class="container">
+            <div class="col s12 l6">
+              <a href="#home"><img src="../pages/../assets/images/fetchapp-logo-man-nav.png" alt="Fetch App Logo" class="responsive-img"></a>
+            </div>
+            <div class="col s12 l6">
+              <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="" class="grey-text text-lighten-3">About</a></li>
+                <li><a href="./pages/shelters.html" class="grey-text text-lighten-3">Shelters</a></li>
+                <li><a href="" class="grey-text text-lighten-3">Contact</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
   </header>
   <!-- End Header -->
+
   <!-- Start Main Body -->
   <main>
     <!-- Start Search Field Section -->
-    <section class="row ">
-      <div class="container center-align">
-        <a href="#"><img src="assets/images/fetchapp-logo.png" alt="Fetch App Logo" class=" responsive-img center-align"></a>
+    <section class="row vertical-center parent">
+      <div class="container center-align" id="main-form">
+        <a href="#"><img src="assets/images/fetchapp-logo.png" alt="Fetch App Logo" class="responsive-img" id="main-logo"></a>
         <form autocomplete="off" id="animal-search-form">
           <div class="input-field col s12 l4">
             <select name="animal-type" id="animal-type" required>
-              <option value="" disabled selected>What are you looking for</option>
-              <option value="dog" class="teal-text text-accent-2">Dog</option>
-              <option value="cat" class="teal-text text-accent-2">Cat</option>
-            </select>
+                <option value="" disabled selected>What are you looking for</option>
+                <option value="dog" class="teal-text text-accent-2">Dog</option>
+                <option value="cat" class="teal-text text-accent-2">Cat</option>
+              </select>
           </div>
           <div class="input-field col s12 l4">
             <label for="location"></label>
@@ -44,14 +65,17 @@
           </div>
         </form>
       </div>
+      <!-- Indeterminate Load Bar -->
+      <div class="container center-align loading">
+        <img src="assets/images/loading-fetch.gif" alt="">
+      </div>
     </section>
-    <!-- Indeterminate Load Bar -->
-    <div class="container center-align loading">
-      <img src="assets/images/loading-fetch.gif" alt="">
-    </div>
     <!-- End Search Field Section -->
+
+
+    <!-- Search results -->
     <section class="row" id="search-results">
-      <div class="container available-animals">
+      <div class="container" id="available-animals">
         <!-- Append Search Results -->
       </div>
     </section>
@@ -60,8 +84,33 @@
   <!-- End Main Body -->
 
   <!-- Start Footer -->
-  <footer>
-
+  <footer class="page-footer deep-purple lighten-3">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">&#60; /&#62; with &hearts; By jakeFeldman</h5>
+          <p class="grey-text text-lighten-4">Follow on <a href="https://github.com/jakeFeldman" class="footer-links">GitHub <i class="fa fa-github fa-lg"></i></a></p>
+        </div>
+        <div class="col l4 offset-l2 s12">
+          <h5 class="white-text">Fetch</h5>
+          <ul>
+            <li><a class="grey-text text-lighten-3" href="#!">About</a></li>
+            <li><a href="./pages/shelters.html" class="grey-text text-lighten-3">Shelters</a></li>
+            <li><a class="grey-text text-lighten-3" href="#!">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+        <div class="left">
+          <a href="#" class="brand-logo"><img src="../pages/../assets/images/fetchapp-logo-man-nav.png" alt="Fetch App Logo" class="responsive-img small-img"></a>
+        </div>
+        <div class="right">
+          &copy; 2017 Jacob Feldman
+        </div>
+      </div>
+    </div>
   </footer>
   <!-- End Footer -->
 

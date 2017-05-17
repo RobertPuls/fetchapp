@@ -47,9 +47,8 @@ function displayMarkers(mapMarkerData){
 
 function displayTable(shelterData) {
   console.log(shelterData);
-
   $.each(shelterData, function(index, value){
-    console.log(shelterData);
+    // console.log(shelterData);
   })
 }
 

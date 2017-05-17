@@ -2,6 +2,7 @@ const API_URL = "https://api.petfinder.com/pet.find?da27018a67011f3d70782e87862d
 
 $(document).ready(function() {
   setLoading(false)
+  setNavigation(false)
   $('select').material_select();
   // disable breed type if cat is selected
   $("#animal-type").change(disableBreedInput)
@@ -9,18 +10,28 @@ $(document).ready(function() {
   function setLoading(isLoading) {
     if (isLoading) {
       $(".loading").show();
-      $("form").hide();
+      $("#main-form").hide();
     } else {
       $(".loading").hide();
-      $("form").show();
+      $("#main-form").show();
+    }
+  }
+
+  function setNavigation(justLandedOnHome) {
+    if (justLandedOnHome) {
+      $("#main-logo").hide();
+      $(".parent").hide();
+      $("#top-navigation").show().fadeIn(1000);
+    } else {
+      $("#top-navigation").hide();
     }
   }
   // Form Submit
   $("#animal-search-form").submit(function(event) {
     event.preventDefault();
-    $(".available-animals").empty();
+    $("#available-animals").empty();
     $("#animal-search-submit").attr("disabled", "disabled");
-    setLoading(true)
+    setLoading(true);
     const locationInput = $("#location").val();
     const breedInput = $("#breed").val();
     const animalInput = $("#animal-type").val();
@@ -67,7 +78,7 @@ $(document).ready(function() {
           petDescription = petDataIndex.description.$t;
         }
         // Append to HTML
-        $(".available-animals").append(
+        $("#available-animals").append(
           `<div class="col s12 m6 l4">
               <div class="card">
                 <div class="card-image waves-effect waves-block waves-light">
@@ -91,11 +102,13 @@ $(document).ready(function() {
       }); //End foreach loop
       $('#animal-search-submit').removeAttr("disabled");
       setLoading(false);
+      setNavigation(true);
     }).catch(function(err) {
       console.log("Error Receiving Data");
-      $(".available-animals").append(`<p>Your search returned 0 results</p>`);
+      $("#available-animals").append(`<p>Your search returned 0 results</p>`);
       $('#animal-search-submit').removeAttr("disabled");
       setLoading(false);
+      setNavigation(true);
     }); //End Catch
   }); //End Form Submit
 
