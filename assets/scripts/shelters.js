@@ -40,7 +40,7 @@ function locationObject(shelterReturnData) {
   // displayTable(shelterData);
 }
 function displayMap () {
-  var denver = {lat: 39.7392, lng: -104.9903}
+  let denver = {lat: 39.7392, lng: -104.9903}
   map = new google.maps.Map(document.getElementById('map'), {
     zoom: 4,
     center: denver
@@ -50,7 +50,6 @@ function displayMap () {
   function dropMarker(mapMarkerData) {
     clearMarkers();
     for (var i = 0; i < mapMarkerData.length; i++) {
-      console.log(mapMarkerData[i]);
       addMarkerWithTimeout(mapMarkerData[i], i * 200);
     }
   }
@@ -72,11 +71,10 @@ function displayMap () {
     markers = [];
   }
 
-
-function displayTable(shelterData) {
-  // console.log(shelterData);
-  $.each(shelterData, function(index, value){
-    // console.log(shelterData);
+function displayTable(data) {
+  // console.log(data);
+  $.each(data, function(index, value){
+    console.log(data);
   })
 }
 
