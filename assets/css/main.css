@@ -71,11 +71,11 @@ a:link, a:visited, a:active {
   color: #b39ddb;
 }
 
-.footer-links > a:link, a:visited, a:active {
+a:link.footer-links, a:visited.footer-links, a:active.footer-links {
   color: #eeeeee;
 }
 
-a:hover {
+a:hover, a:hover.footer-links {
   color: #64ffda;
 }
 
