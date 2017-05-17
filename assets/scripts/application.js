@@ -2,7 +2,6 @@ const API_URL = "https://api.petfinder.com/pet.find?da27018a67011f3d70782e87862d
 
 $(document).ready(function() {
   setLoading(false)
-
   $('select').material_select();
   // disable breed type if cat is selected
   $("#animal-type").change(disableBreedInput)
@@ -16,9 +15,8 @@ $(document).ready(function() {
       $("form").show();
     }
   }
-
   // Form Submit
-  $("form").submit(function(event) {
+  $("#animal-search-form").submit(function(event) {
     event.preventDefault();
     $(".available-animals").empty();
     $("#animal-search-submit").attr("disabled", "disabled");
@@ -26,8 +24,12 @@ $(document).ready(function() {
     const locationInput = $("#location").val();
     const breedInput = $("#breed").val();
     const animalInput = $("#animal-type").val();
+
     let QUERY_URL;
-    if (animalInput != "undefined" && locationInput != "undefined" && breedInput != "undefined") {
+
+    if (animalInput == "cat" && locationInput != "undefined") {
+      QUERY_URL = API_URL + `&animal=${animalInput}&location=${locationInput}&callback=?`
+    } else if (animalInput != "undefined" && locationInput != "undefined" && breedInput != "undefined") {
       QUERY_URL = API_URL + `&animal=${animalInput}&location=${locationInput}&breed=${breedInput}&callback=?`
     } else if (locationInput != "undefined" && !breedInput) {
       QUERY_URL = API_URL + `&animal=${animalInput}&location=${locationInput}&callback=?`
@@ -38,13 +40,11 @@ $(document).ready(function() {
       $.each(petData, function(index, value) {
         const petDataIndex = petData[index];
         let petPhoto;
-        // Not working
         if (!petDataIndex.media.photos) {
           petPhoto = "assets/images/photo-unavailable.png" // placeholder image
         } else {
           petPhoto = petDataIndex.media.photos.photo[2].$t;
         }
-        // console.log(petPhoto);
         let petName = petDataIndex.name.$t
         const contactEmail = petDataIndex.contact.email.$t;
         let contactPhone;
@@ -68,16 +68,16 @@ $(document).ready(function() {
         }
         // Append to HTML
         $(".available-animals").append(
-          `<div class="col s12 m6 l3">
+          `<div class="col s12 m6 l4">
               <div class="card">
                 <div class="card-image waves-effect waves-block waves-light">
                   <img class="activator img-cropper" src="${petPhoto}">
                 </div>
                 <div class="card-content">
-                  <span class="card-title activator grey-text text-darken-4">${petName.substring(0,9)}<i class="material-icons right">more_vert</i></span>
-                  <p><i class="material-icons tiny">email</i> <a href="mailto:${contactEmail}">Contact Email</a></p>
-                  <p><i class="material-icons tiny">phone</i> ${contactPhone.substring(0,13)}</p>
-                  <p><i class="material-icons tiny">location_on</i> ${petLocation}</p>
+                  <span class="card-title activator grey-text text-darken-4 truncate">${petName.substring(0,9)}<i class="material-icons right">more_vert</i></span>
+                  <p><i class="material-icons tiny truncate">email</i> <a href="mailto:${contactEmail}">Contact Email</a></p>
+                  <p><i class="material-icons tiny truncate">phone</i> ${contactPhone.substring(0,13)}</p>
+                  <p><i class="material-icons tiny truncate">location_on</i> ${petLocation}</p>
                   <p>Status: ${availableStatus}</p>
                 </div>
                 <div class="card-reveal">
@@ -99,26 +99,26 @@ $(document).ready(function() {
     }); //End Catch
   }); //End Form Submit
 
-  const BREED_URL = "http://api.petfinder.com/breed.list?animal=dog&da27018a67011f3d70782e87862dfc22&key=298afb38924e16ecd46eb9871122641b&format=json&callback=?"
+  const BREED_URL = "https://api.petfinder.com/breed.list?animal=dog&da27018a67011f3d70782e87862dfc22&key=298afb38924e16ecd46eb9871122641b&format=json&callback=?"
 
   function breedResults() {
     $.getJSON(BREED_URL)
       .then(displayDogBreeds)
   }
-
+  // Fn to get list of available breeds to create an autocomplete form
   function displayDogBreeds(dogBreedData) {
     const breedData = dogBreedData.petfinder.breeds.breed
     let breedTypes = {};
     $.each(breedData, function(index, value) {
       breedTypes[breedData[index].$t] = null;
     });
-    console.log(breedTypes);
     $('#breed').autocomplete({
-        data: breedTypes,
-        limit: 20,
-        minLength: 1,
-      });
-    }; //End Fn displayDogBreeds
+      data: breedTypes,
+      limit: 20,
+      minLength: 1,
+    });
+  }; //End Fn displayDogBreeds
+
   breedResults();
 
   // Fn to disable breed input if cat is selected.
