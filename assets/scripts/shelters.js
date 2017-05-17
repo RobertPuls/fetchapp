@@ -2,6 +2,7 @@ const SHELTER_BASE_URL = `https://api.petfinder.com/shelter.find?da27018a67011f3
 // const MAP_URL = `https://www.google.com/maps/embed/v1/search?key=AIzaSyA34rq6f9suxd0j5VwhPYtmXs7z7PG9YRM&location=${shelterCoordinates}`;
 let SHELTER_URL;
 let map = null;
+let markers = [];
 
 $(document).ready(function() {
 setLoading(false)
@@ -25,35 +26,52 @@ function getShelterData() {
 }
 
 function locationObject(shelterReturnData) {
-    // console.log(shelterReturnData);
     const shelterData = shelterReturnData.petfinder.shelters.shelter;
-    let shelterLocate ={};
     let mapMarkerData = [];
     $.each(shelterData, function(index, value) {
-      shelterLocate["name"] = shelterData[index].name.$t;
-      shelterLocate["lat"] = shelterData[index].latitude.$t;
-      shelterLocate["lng"] = shelterData[index].longitude.$t;
-      shelterLocate["city"] = shelterData[index].city.$t;
-      mapMarkerData.push(shelterLocate)
+      let shelterLocate = {};
+      // shelterLocate["name"] = shelterData[index].name.$t;
+      shelterLocate["lat"] = parseFloat(shelterData[index].latitude.$t);
+      shelterLocate["lng"] = parseFloat(shelterData[index].longitude.$t);
+      console.log(shelterLocate);
+      mapMarkerData.push(shelterLocate);
   })
-  displayMarkers(mapMarkerData);
-  displayTable(shelterData);
+  dropMarker(mapMarkerData);
+  // displayTable(shelterData);
 }
 function displayMap () {
-  console.log("SHOW MAP");
-  var denver = {lat: 39.7392, lng: 104.9903}
+  var denver = {lat: 39.7392, lng: -104.9903}
   map = new google.maps.Map(document.getElementById('map'), {
     zoom: 4,
     center: denver
   });
 }
 
-function displayMarkers(mapMarkerData){
-  console.log(mapMarkerData);
- for (var i = 0; i < mapMarkerData.length; i++) {
-   console.log(mapMarkerData[i]);
- }
-}
+  function dropMarker(mapMarkerData) {
+    clearMarkers();
+    for (var i = 0; i < mapMarkerData.length; i++) {
+      console.log(mapMarkerData[i]);
+      addMarkerWithTimeout(mapMarkerData[i], i * 200);
+    }
+  }
+
+  function addMarkerWithTimeout(position, timeout) {
+    window.setTimeout(function() {
+      markers.push(new google.maps.Marker({
+        position: position,
+        map: map,
+        animation: google.maps.Animation.DROP
+      }));
+    }, timeout);
+  }
+
+  function clearMarkers() {
+    for (var i = 0; i < markers.length; i++) {
+      markers[i].setMap(null);
+    }
+    markers = [];
+  }
+
 
 function displayTable(shelterData) {
   // console.log(shelterData);
