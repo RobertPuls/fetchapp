@@ -79,6 +79,11 @@ a:hover {
   color: #64ffda;
 }
 
+#map {
+  width: 70vw;
+  height: 400px;
+}
+
 /*=========================================*/
 /*Media Queries*/
 /*=========================================*/
@@ -87,10 +92,19 @@ a:hover {
   .img-cropper {
     height: 400px;
   }
+
+  #map {
+    width: 85vw;
+  }
+
 }
 
 @media screen and (max-width: 600px) {
   .img-cropper {
     height: 500px;
   }
+  #map {
+    width: 90vw;
+  }
+
 }

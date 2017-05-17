@@ -8,6 +8,7 @@
   <!-- Stylesheets -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="../pages/../assets/css/main.css">
   <link rel="shortcut icon" type="image/x-icon" href="../pages/../assets/images/favicon.ico">
 </head>
@@ -23,9 +24,9 @@
             </div>
             <div class="col s12 l6">
               <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="" class="grey-text text-lighten-3">About</a></li>
+                <li><a href="./about.html" class="grey-text text-lighten-3">About</a></li>
                 <li><a href="#" class="grey-text text-lighten-3">Shelters</a></li>
-                <li><a href="" class="grey-text text-lighten-3">Contact</a></li>
+                <li><a href="./contact.html" class="grey-text text-lighten-3">Contact</a></li>
               </ul>
             </div>
           </div>
@@ -33,56 +34,51 @@
       </div>
     </nav>
   </header>
+  <main>
+    <section class="container">
+      <div class="row">
+        <h2 class="header">Animal Shelter Lookup</h2>
+        <p>
+          Start your search for your local animal shelter or rescue. Enter your zip code, or city and state, and find a list of animal shelters, animal control agencies, and other animal care organizations in your community. You can also find animals available
+          for adoption, low-cost spay/neuter services, and volunteer opportunities.
+        </p>
+      </div>
+    </section>
 
-  <section class="container">
-    <h2 class="header">Animal Shelter Lookup</h2>
-    <p>
-      Start your search for your local animal shelter or rescue. Enter your zip code, or city and state, and find a list of animal shelters, animal control agencies, and other animal care organizations in your community. You can also find animals available
-      for adoption, low-cost spay/neuter services, and volunteer opportunities.
-    </p>
-  </section>
+    <section>
+      <div class="container">
+        <form class="row valign-wrapper" autocomplete="off" id="shelter-location-form">
 
-  <section>
-    <div class="row">
-      <form class="container valign-wrapper" autocomplete="off" id="shelter-location-form">
+          <div class="input-field col s12 l6">
+            <label for="shelter-location"></label>
+            <input type="text" id="shelter-location-input" name="shelter-location" value="" placeholder="Location: ZIP/City State" required>
+          </div>
 
-        <div class="input-field col s12 l6">
-          <label for="shelter-location"></label>
-          <input type="text" id="shelter-location-input" name="shelter-location" value="" placeholder="Location: ZIP/City State" required>
-        </div>
+          <div class="col s12 l6">
+            <button type="submit" id="shelter-search-submit" name="shelter-button" class="btn teal accent-2">SEARCH</button>
+          </div>
 
-        <div class="col s12 l6">
-          <button type="submit" id="shelter-search-submit" name="shelter-button" class="btn teal accent-2">SEARCH</button>
-        </div>
+        </form>
+      </div>
+    </section>
 
-      </form>
-    </div>
-  </section>
-
-  <!-- Map and Table Section -->
-  <section class="row">
-    <div class="container">
-      <div class="col s12 l3">
-        <div class="striped" id="table">
-          <!-- TABLE GOES HERE -->
+    <!-- Map and Table Section -->
+    <section class="container">
+      <div class="row">
+        <div class="col s12">
+          <div id="map">
+            <!-- MAP GOES HERE -->
+          </div>
         </div>
       </div>
+    </section>
 
-
-      <div class="col s12 l9">
-        <div id="map">
-          <!-- MAP GOES HERE -->
-        </div>
+    <section>
+      <div class="container center-align loading">
+        <img src="../pages/../assets/images/loading-fetch.gif" alt="">
       </div>
-
-    </div>
-  </section>
-
-  <section>
-    <div class="container center-align loading">
-      <img src="../pages/../assets/images/loading-fetch.gif" alt="">
-    </div>
-  </section>
+    </section>
+  </main>
 
   <footer class="page-footer deep-purple lighten-3">
     <div class="container">
@@ -94,21 +90,21 @@
         <div class="col l4 offset-l2 s12">
           <h5 class="white-text">Fetch</h5>
           <ul>
-            <li><a class="grey-text text-lighten-3" href="#!">About</a></li>
+            <li><a href="./about.html" class="grey-text text-lighten-3">About</a></li>
             <li><a href="#" class="grey-text text-lighten-3">Shelters</a></li>
-            <li><a class="grey-text text-lighten-3" href="#!">Contact</a></li>
+            <li><a href="./contact.html" class="grey-text text-lighten-3">Contact</a></li>
           </ul>
         </div>
       </div>
     </div>
     <div class="footer-copyright">
       <div class="container">
-      <div class="left">
-        <a href="#" class="brand-logo"><img src="../pages/../assets/images/fetchapp-logo-man-nav.png" alt="Fetch App Logo" class="responsive-img small-img"></a>
-      </div>
-      <div class="right">
-        &copy; 2017 Jacob Feldman
-      </div>
+        <div class="left">
+          <a href="../index.html"><img src="../pages/../assets/images/fetchapp-logo-man-nav.png" alt="Fetch App Logo" class="responsive-img small-img"></a>
+        </div>
+        <div class="right">
+          &copy; 2017 Jacob Feldman
+        </div>
       </div>
     </div>
   </footer>

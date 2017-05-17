@@ -20,12 +20,20 @@ $(document).ready(function() {
   function setNavigation(justLandedOnHome) {
     if (justLandedOnHome) {
       $("#main-logo").hide();
-      $(".parent").hide();
       $("#top-navigation").show().fadeIn(1000);
     } else {
       $("#top-navigation").hide();
     }
   }
+
+function centerResults(isLoaded) {
+  if (isLoaded) {
+    $("#main").addClass("vertical-center")
+    $("#form-section").removeClass("vertical-center", "parent")
+  }
+
+}
+
   // Form Submit
   $("#animal-search-form").submit(function(event) {
     event.preventDefault();
@@ -103,6 +111,7 @@ $(document).ready(function() {
       $('#animal-search-submit').removeAttr("disabled");
       setLoading(false);
       setNavigation(true);
+      centerResults(true)
     }).catch(function(err) {
       console.log("Error Receiving Data");
       $("#available-animals").append(`<p>Your search returned 0 results</p>`);

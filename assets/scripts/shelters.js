@@ -1,9 +1,12 @@
-const SHELTER_BASE_URL = `http://api.petfinder.com/shelter.find?da27018a67011f3d70782e87862dfc22&key=298afb38924e16ecd46eb9871122641b&format=json`
+const SHELTER_BASE_URL = `https://api.petfinder.com/shelter.find?da27018a67011f3d70782e87862dfc22&key=298afb38924e16ecd46eb9871122641b&format=json`
 // const MAP_URL = `https://www.google.com/maps/embed/v1/search?key=AIzaSyA34rq6f9suxd0j5VwhPYtmXs7z7PG9YRM&location=${shelterCoordinates}`;
 let SHELTER_URL;
+let map = null;
 
 $(document).ready(function() {
 setLoading(false)
+
+displayMap();
 
 $("#shelter-location-form").submit(submitLocation);
 
@@ -36,17 +39,24 @@ function locationObject(shelterReturnData) {
   displayMarkers(mapMarkerData);
   displayTable(shelterData);
 }
-
+function displayMap () {
+  console.log("SHOW MAP");
+  var denver = {lat: 39.7392, lng: 104.9903}
+  map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 4,
+    center: denver
+  });
+}
 
 function displayMarkers(mapMarkerData){
   console.log(mapMarkerData);
  for (var i = 0; i < mapMarkerData.length; i++) {
-  //  console.log(mapMarkerData[i]);
+   console.log(mapMarkerData[i]);
  }
 }
 
 function displayTable(shelterData) {
-  console.log(shelterData);
+  // console.log(shelterData);
   $.each(shelterData, function(index, value){
     // console.log(shelterData);
   })
