@@ -38,7 +38,7 @@ $(document).ready(function() {
       shelterLocate["state"] = shelterData[index].state.$t;
       shelterLocate["zip"] = shelterData[index].zip.$t;
       mapMarkerData.push(shelterLocate);
-      viewportLatLng.push(shelterLocate["lat"],shelterLocate["lng"])
+      viewportLatLng.push({lat: shelterLocate["lat"], lng: shelterLocate["lng"]})
     });
     // console.log(shelterData);
     // console.log(mapMarkerData);
@@ -66,15 +66,16 @@ $(document).ready(function() {
   };
 
   function addMarkerWithTimeout(position, timeout) {
+    let marker = new google.maps.Marker({
+      position: position,
+      map: map,
+      animation: google.maps.Animation.DROP,
+      title: position.name,
+    })
     window.setTimeout(function() {
-      markers.push(new google.maps.Marker({
-        position: position,
-        map: map,
-        animation: google.maps.Animation.DROP,
-        title: position.name,
-      }));
+      markers.push(marker);
     }, timeout);
-    markerClickFunction(position);
+    markerClickFunction(marker, position);
   };
 
   function clearMarkers() {
@@ -84,12 +85,12 @@ $(document).ready(function() {
     markers = [];
   };
 
-  function markerClickFunction(position) {
+  function markerClickFunction(marker, position) {
     let infowindow = new google.maps.InfoWindow({
-      content: `<div class="map-marker"><h3>${position.name}</h3><p>${position.phone}<p><p>${position.city}, ${position.state} ${position.zip}</p></div>`
+      content: `<div class="map-marker"><h5>${position.name}</h5><p>${position.city}, ${position.state} ${position.zip}</p><p>${position.phone}<p></div>`
     });
-    google.maps.event.addListener(markers, 'click', function() {
-      infowindow.open(map, markers)
+    marker.addListener('click', function() {
+      infowindow.open(map, marker)
     });
   }
 
