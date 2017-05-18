@@ -35,8 +35,8 @@
     </nav>
   </header>
   <main>
-    <section class="container">
-      <div class="row">
+    <section class="row">
+      <div class="container">
         <h2 class="header">Animal Shelter Lookup</h2>
         <p>
           Start your search for your local animal shelter or rescue. Enter your zip code, or city and state, and find a list of animal shelters, animal control agencies, and other animal care organizations in your community. You can also find animals available
@@ -51,7 +51,7 @@
 
           <div class="input-field col s12 l6">
             <label for="shelter-location"></label>
-            <input type="text" id="shelter-location-input" name="shelter-location" value="" placeholder="Location: ZIP/City State" required>
+            <input type="text" id="shelter-location-input" name="shelter-location" value="" placeholder="Location: Zipcode | City, State | State" required>
           </div>
 
           <div class="col s12 l6">
@@ -72,13 +72,32 @@
         </div>
       </div>
     </section>
-
+    <!-- Indeterminate Load Bar -->
     <section>
       <div class="container center-align loading">
         <img src="../pages/../assets/images/loading-fetch.gif" alt="">
       </div>
     </section>
+
+    <section class="row" id="table-section">
+      <div class="container">
+        <table class="striped">
+          <thead>
+            <tr>
+              <th>Name:</th>
+              <th>Location:</th>
+              <th>Phone:</th>
+              <th>Email:</th>
+            </tr>
+          </thead>
+          <tbody id="shelter-table">
+            <!-- TABLE GOES HERE -->
+          </tbody>
+        </table>
+      </div>
   </main>
+
+</section>
 
   <footer class="page-footer deep-purple lighten-3">
     <div class="container">

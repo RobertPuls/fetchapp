@@ -93,9 +93,9 @@ function centerResults(isLoaded) {
                 </div>
                 <div class="card-content">
                   <span class="card-title activator grey-text text-darken-4 truncate">${petName.substring(0,9)}<i class="material-icons right">more_vert</i></span>
-                  <p><i class="material-icons tiny truncate">email</i> <a href="mailto:${contactEmail}">Contact Email</a></p>
-                  <p><i class="material-icons tiny truncate">phone</i> ${contactPhone.substring(0,13)}</p>
-                  <p><i class="material-icons tiny truncate">location_on</i> ${petLocation}</p>
+                  <p><i class="material-icons tiny">email</i> <a href="mailto:${contactEmail}">Contact Email</a></p>
+                  <p><i class="material-icons tiny">phone</i> ${contactPhone.substring(0,13)}</p>
+                  <p><i class="material-icons tiny">location_on</i> ${petLocation}</p>
                   <p>Status: ${availableStatus}</p>
                 </div>
                 <div class="card-reveal">
@@ -126,6 +126,7 @@ function centerResults(isLoaded) {
     $.getJSON(BREED_URL)
       .then(displayDogBreeds)
   }
+
   // Fn to get list of available breeds to create an autocomplete form
   function displayDogBreeds(dogBreedData) {
     const breedData = dogBreedData.petfinder.breeds.breed
