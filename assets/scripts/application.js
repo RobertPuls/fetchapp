@@ -1,5 +1,4 @@
 const API_URL = "https://api.petfinder.com/pet.find?da27018a67011f3d70782e87862dfc22&key=298afb38924e16ecd46eb9871122641b&format=json&count=48";
-
 $(document).ready(function() {
   setLoading(false)
   setNavigation(false)
