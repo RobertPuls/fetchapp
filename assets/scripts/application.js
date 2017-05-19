@@ -1,4 +1,4 @@
-const API_URL = "https://api.petfinder.com/pet.find?da27018a67011f3d70782e87862dfc22&key=298afb38924e16ecd46eb9871122641b&format=json&count=48";
+const API_URL = "https://api.petfinder.com/pet.find?da27018a67011f3d70782e87862dfc22&key=298afb38924e16ecd46eb9871122641b&format=json&count=24";
 $(document).ready(function() {
   setLoading(false)
   setNavigation(false)
@@ -25,26 +25,24 @@ $(document).ready(function() {
     }
   }
 
-function centerResults(isLoaded) {
-  if (isLoaded) {
-    $("#main").addClass("vertical-center")
-    $("#form-section").removeClass("vertical-center", "parent")
+  function centerResults(isLoaded) {
+    if (isLoaded) {
+      $("#main").addClass("vertical-center")
+      $("#form-section").removeClass("vertical-center", "parent")
+    }
   }
-
-}
 
   // Form Submit
   $("#animal-search-form").submit(function(event) {
     event.preventDefault();
+    $("#body").removeClass("bg-hero-image");
     $("#available-animals").empty();
     $("#animal-search-submit").attr("disabled", "disabled");
     setLoading(true);
     const locationInput = $("#location").val();
     const breedInput = $("#breed").val();
     const animalInput = $("#animal-type").val();
-
     let QUERY_URL;
-
     if (animalInput == "cat" && locationInput != "undefined") {
       QUERY_URL = API_URL + `&animal=${animalInput}&location=${locationInput}&callback=?`
     } else if (animalInput != "undefined" && locationInput != "undefined" && breedInput != "undefined") {
